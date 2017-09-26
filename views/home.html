@@ -1,0 +1,22 @@
+<!-- Nav bar video listing page -->
+<nav class="navbar nav-home">
+  <div class="container-fluid">
+    <div class="navbar-header marg-0">
+      <div class="arrow-icon">
+        <img class="arrow-icon-img" src="img/Back.png">
+      </div>
+      <p class="navbar-text" ng-bind="title"></p>
+      <div class="search-icon" ng-click="gotoSearch()">
+        <span class="search-text">Search</span>
+        <img class="search-icon-img" src="img/search.png">
+      </div>
+  </div>
+  </div>
+</nav>
+<!-- Video listing, video loading while scrolling -->
+<div class="video-list" scroll-trigger="loadMoreVideos()" threshold="500">
+  <div class="video-profile" ng-repeat="video in pageDetails['content-items'].content">
+    <img class="video-profile-img" ng-src="img/{{video['poster-image']}}" err-src="{{errSrc}}">
+    <div class="video-profile-desc" ng-bind="video.name"></div>
+  </div>
+</div>

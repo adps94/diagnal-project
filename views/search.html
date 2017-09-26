@@ -1,0 +1,32 @@
+<!-- Nav bar video search page -->
+<nav class="navbar nav-search">
+  <div class="container-fluid search-section">
+    <div class="navbar-header marg-0">
+      <div class="search-icon-left">
+        <i class="fa fa-search search-bar-icons"></i>
+      </div>
+      <input class="search-video" name="search" ng-model="searchText.$" ng-change="searchItem()" placeholder="Search..." autofocus>
+      <div class="cancel-search" ng-click="goBack()">
+        <span class="cancel-search-text">Cancel</span>
+      </div>
+      <div class="clear-search" ng-click="clear()" ng-show="searchText.$.length">
+        <i class="fa fa-times search-bar-icons"></i>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Search result view - Video list -->
+<div class="search-list" ng-show="searchText.$.length && noResult">
+  <div class="video-profile" ng-repeat="video in pageDetails['content-items'].content | filter:searchText:strict">
+    <img class="video-profile-img" ng-src="img/{{video['poster-image']}}" err-src="{{errSrc}}">
+    <div class="video-profile-desc" ng-bind="video.name"></div>
+  </div>
+</div>
+<!-- Search result view - No search result  -->
+<div class="outer" ng-show="!noResult">
+    <div class="middle">
+      <div class="inner">
+        <div class="empty-video-list" ng-bind="emptyView"></div>
+      </div>
+    </div>
+</div>
